@@ -22,4 +22,10 @@ public class CabInvoiceGenerator {
         return distance * COST_PER_KM + time * COST_PER_MINUTE;
 
     }
+    public static Invoice InvoiceOfRides(Ride[] rides) {
+        int numberOfRides = rides.length;
+        double totalFare = getTotalFare(rides);
+        double averageRideFare = totalFare/numberOfRides;
+        return new Invoice(numberOfRides,totalFare,averageRideFare);
+    }
 }
