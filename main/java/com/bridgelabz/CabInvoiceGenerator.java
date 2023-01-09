@@ -8,7 +8,18 @@ public class CabInvoiceGenerator {
 
         return distance * COST_PER_KM + time * COST_PER_MINUTE;
     }
-    public static void main(String[] args) {
-        System.out.println("----------Welcome To Cab Invoice Generator--------");
+
+    public static double getTotalFare(Ride[] rides) {
+        double aggregateFare = 0;
+        for (Ride ride : rides) {
+            double totalFare = getTotalFare(ride.distance, ride.time);
+            aggregateFare += totalFare;
+        }
+        return aggregateFare;
+    }
+
+    private static double getTotalFare(double distance, double time) {
+        return distance * COST_PER_KM + time * COST_PER_MINUTE;
+
     }
 }
